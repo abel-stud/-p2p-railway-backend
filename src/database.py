@@ -9,6 +9,8 @@ DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./p2p_trading.db")
 # Fix for Railway PostgreSQL URL format (Railway uses postgres:// but SQLAlchemy needs postgresql://)
 if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+print(f"DEBUG: DATABASE_URL = {DATABASE_URL}")
+
 
 # Create engine with appropriate settings
 if DATABASE_URL.startswith("postgresql://"):
