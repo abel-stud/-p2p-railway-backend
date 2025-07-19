@@ -25,11 +25,13 @@ app = FastAPI(
 # CORS middleware for frontend access
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, specify your frontend domain
+    allow_origins=["*"],  # Allow all origins
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     allow_headers=["*"],
-)
+    expose_headers=["*"],
+    allow_origin_regex=r"https://.*\.railway\.app",  # Allow Railway domains
+ )
 
 # Configuration
 ESCROW_WALLET = os.getenv("ESCROW_WALLET", "TXxxxxxx")
